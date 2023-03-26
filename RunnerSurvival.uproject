@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{CA3E8703-4923-DA39-C94A-B68E5E1ACC1F}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "RunnerSurvival",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"UMG",
+				"GameplayAbilities"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "FirstPlugin",
+			"Enabled": false
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		}
+	],
+	"TargetPlatforms": []
+}
