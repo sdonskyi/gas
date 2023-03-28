@@ -1,0 +1,24 @@
+{
+  "FileVersion" : 1,
+  "Version" : 1,
+  "VersionName" : "1.0",
+  "FriendlyName" : "First Plugin",
+  "Description" : "Test plugin",
+  "Category" : "Other",
+  "CreatedBy" : "SDonskiy",
+  "CreatedByURL" : "",
+  "DocsURL" : "",
+  "MarketplaceURL" : "",
+  "SupportURL" : "",
+  "EnabledByDefault" : true,
+  "CanContainContent" : true,
+  "Installed" : true,
+  "Modules" :
+  [
+     {
+        "Name" : "FirstPlugin",
+        "Type" : "Runtime",
+        "LoadingPhase" : "Default"
+     }
+  ]
+}
