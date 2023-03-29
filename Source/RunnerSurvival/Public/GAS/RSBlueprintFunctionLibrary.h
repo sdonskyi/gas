@@ -13,6 +13,6 @@ class RUNNERSURVIVAL_API URSBlueprintFunctionLibrary : public UBlueprintFunction
 public:
 
 	UFUNCTION(BlueprintCallable, Category="Gas")
-	static int32 GetStartLevel();
+	static int32 GetAmountLevelsForLevelUp();
 	
 };
