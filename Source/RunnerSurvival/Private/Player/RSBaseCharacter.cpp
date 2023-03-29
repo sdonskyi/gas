@@ -72,16 +72,6 @@ void ARSBaseCharacter::BeginPlay()
 	{
 		//Link Attribute Set to Ability System Component
 		AttributeSet = const_cast<URSAttributeSet*>(AbilitySystemComponent->GetSet<URSAttributeSet>());
-
-		//Bindings for Attribute Change Delegates
-		//const_cast<URSAttributeSet*>(AttributeSet)->HealthChangeDelegate.AddDynamic(this, &AGASCharacter::OnHealthChangedNative);
-		//const_cast<URSAttributeSet*>(AttributeSet)->ManaChangeDelegate.AddDynamic(this, &AGASCharacter::OnManaChangedNative);
-		//const_cast<URSAttributeSet*>(AttributeSet)->BaseAttackDamageChangeDelegate.AddDynamic(this, &AGASCharacter::OnBaseAttackDamageChangedNative);
-		//const_cast<URSAttributeSet*>(AttributeSet)->SpeedMultiplierChangeDelegate.AddDynamic(this, &AGASCharacter::OnSpeedMultiplierChangedNative);
-
-		//Alternate Method for Attribute Change Delegate
-		//AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AttributeSetVar->GetHealthAttribute()).AddUObject(this, &AGASCharacter::OnHealthChangedNative);
-		//AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AttributeSetVar->GetManaAttribute()).AddUObject(this, &AGASCharacter::OnManaChangedNative);
 	}
 }
 
@@ -249,6 +239,10 @@ void ARSBaseCharacter::MeleeAttack()
 
 void ARSBaseCharacter::ChangeAbilityLevelWithTags(FGameplayTagContainer TagContainer, int32 NewLevel)
 {
+	if (!IsValid(AbilitySystemComponent))
+	{
+		return;
+	}
 	TArray<FGameplayAbilitySpec*> MatchingAbility;
 	AbilitySystemComponent->GetActivatableGameplayAbilitySpecsByAllMatchingTags(TagContainer, MatchingAbility, true);
 	for (FGameplayAbilitySpec* Spec : MatchingAbility)
@@ -259,6 +253,10 @@ void ARSBaseCharacter::ChangeAbilityLevelWithTags(FGameplayTagContainer TagConta
 
 int32 ARSBaseCharacter::GetLevelAbilityByTag(FGameplayTagContainer TagContainer)
 {
+	if (!IsValid(AbilitySystemComponent))
+	{
+		return 0;
+	}
 	TArray<FGameplayAbilitySpec*> MatchingAbility;
 	AbilitySystemComponent->GetActivatableGameplayAbilitySpecsByAllMatchingTags(TagContainer, MatchingAbility, true);
 	for (FGameplayAbilitySpec* Spec : MatchingAbility)
